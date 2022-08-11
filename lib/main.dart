@@ -30,13 +30,123 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final data = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z"
+  ];
+
+  final subData = [
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+    "sub data",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(),
+      body: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          //return listTileUI(context, index);
+          return customUI(context, index);
+        },
+      ),
+    );
+  }
+
+  ListTile listTileUI(BuildContext context, int index) {
+    return ListTile(
+      onTap: () {
+        debugPrint(data[index]);
+      },
+      title: Center(child: Text(data[index])),
+    );
+  }
+
+  Widget customUI(BuildContext context, int index) {
+    return GestureDetector(
+      onTap: () {
+        debugPrint("100..");
+        debugPrint("${data[index]}_and_${subData[index]}");
+      },
+      child: Container(
+        margin: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.add_a_photo),
+                const SizedBox(width: 20),
+                Text(
+                  data[index],
+                ),
+              ],
+            ),
+            const SizedBox(
+              width: double.infinity,
+              height: 30.0,
+            ),
+            Text(
+              subData[index],
+            ),
+            const Divider(
+              height: 10,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
